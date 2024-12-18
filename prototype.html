@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <link rel="icon" href="https://example.com/original-favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, blue, purple);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: background 0.5s;
+            color: #fff;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+        .dropdown, .search-bar {
+            margin: 20px 0;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown select, .search-bar input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin: 20px 0;
+        }
+        .fullscreen-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .fullscreen-button:hover {
+            background-color: #218838;
+        }
+        .music-button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff2d55;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .music-button:hover {
+            background-color: #e02648;
+        }
+        .music-controls {
+            margin: 20px 0;
+        }
+        .music-controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .music-controls button.play {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .music-controls button.pause {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .music-controls input[type="range"] {
+            width: 80%;
+        }
+        #nowPlaying {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media only screen and (max-width: 768px) {
+            .iframe-container {
+                height: 300px;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="pageTitle">Welcome to Game Hub</h1>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search games..." onkeyup="searchGames()">
+    </div>
+
+    <div class="dropdown">
+        <select id="gameSelect" onchange="loadGame()">
+            <option value="">Select a game...</option>
+            <option value="https://ubg77.github.io/game131022/drive-mad/">Drive Mad</option>
+            <option value="https://example.com/1v1_lol">1v1.lol</option>
+            <option value="https://example.com/eaglercraftX">EaglercraftX</option>
+            <option value="https://example.com/tiny_fishing">Tiny Fishing</option>
+            <option value="https://example.com/drift_hunters">Drift Hunters</option>
+            <option value="https://example.com/basketball_stars">Basketball Stars</option>
+            <option value="https://example.com/rooftop_snipers">Rooftop Snipers</option>
+            <option value="https://example.com/baldis_basics">Baldi's Basics</option>
+        </select>
+    </div>
+
+    <div id="gameContainer" class="iframe-container"></div>
+
+    <button class="button" onclick="toggleDarkMode()">Dark Mode</button>
+    <button class="button" onclick="toggleSound()">Toggle Sound</button>
+    <button class="button" onclick="toggleTheme()">Change Theme</button>
+    <button class="button" onclick="toggleChatBox()">Chat</button>
+
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <div id="nowPlaying">Not playing</div>
+        <button class="play" onclick="playMusic()">Play</button>
+        <button class="pause" onclick="pauseMusic()">Pause</button>
+    </div>
+
+    <!-- Music Button -->
+    <button class="music-button" onclick="openMusicModal()">Choose Music</button>
+
+    <!-- Music Modal -->
+    <div id="musicModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMusicModal()">&times;</span>
+            <iframe src="music-popup.html" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+    </div>
+
+</div>
+
+<div id="chatBox">
+    <ul id="chatMessages"></ul>
+    <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="sendMessage(event)">
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="Script.js"></script>
+
+</body>
+</html>
