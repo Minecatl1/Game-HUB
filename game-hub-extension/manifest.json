@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Game Hub",
+    "version": "1.0",
+    "description": "An extension to access Game Hub directly from your browser.",
+    "icons": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "48": "icon48.png"
+      }
+    },
+    "permissions": [
+      "activeTab",
+      "tabs"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "music-popup.html",
+          "music-popup.css",
+          "music-popup.js"
+        ],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
+  
