@@ -1,0 +1,79 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.venv/
+.Python
+*.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.nfs*
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+__pycache__/
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# Environment variables
+.env
+
+# Coverage and testing
+coverage/
+.cache
+.pytest_cache/
+
+# Compiled files
+*.o
+*.so
+*.a
+*.out
+*.dylib
+*.exe
+*.dll
+
+# Chrome extension
+*.pem
+
+# Build artifacts
+build/
+dist/
+*.map
+*.tgz
+*.bak
+
+# Flask specific
+instance/
+.webassets-cache
+.env.bak
