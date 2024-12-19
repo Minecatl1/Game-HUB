@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='music-popup.css') }}">
+</head>
+<body>
+
+<h1>Search Music</h1>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search for music...">
+</div>
+
+<div class="results" id="results">
+    <h2>Search Results</h2>
+</div>
+
+<div class="recommendations" id="recommendations">
+    <h2>Recommended Tracks</h2>
+</div>
+
+<div id="player"></div>
+
+<div class="music-controls">
+    <div id="nowPlaying">Not playing</div>
+    <button class="play" id="playButton">Play</button>
+    <button class="pause" id="pauseButton">Pause</button>
+    <button id="pipButton" class="pip">Toggle Picture-in-Picture</button>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="{{ url_for('static', filename='music-popup.js') }}"></script>
+
+</body>
+</html>

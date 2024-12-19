@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, blue, purple);
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.results, .recommendations {
+  margin-top: 20px;
+}
+
+.track {
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+
+.track img {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.track-info {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.track-info h3 {
+  margin: 0;
+  font-size: 1em;
+}
+
+.track-info p {
+  margin: 0;
+  color: #666;
+}
+
+#player {
+  margin-top: 20px;
+}
+
+.music-controls {
+  margin-top: 20px;
+}
+
+#pipButton {
+  display: none;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#pipButton:hover {
+  background-color: #0056b3;
+}
